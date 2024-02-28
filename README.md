@@ -5,7 +5,7 @@
 </p>
 
 ## The Game 
-Colosseum Survival! is a 2-player turn-based strategy game in which two players move in an M x M chessboard and put barriers around them until they are separated in two closed zones. M can have a value between 6 and 12. Each player will try to maximize the number of blocks in its zone to win the game. Our solution can be found in agents/student_agent.py.
+Colosseum Survival! is a 2-player turn-based strategy game in which two players move in an M x M chessboard and put barriers around them until they are separated in two closed zones. M can have a value between 6 and 12. Each player will try to maximize the number of blocks in its zone to win the game. Sample game board and gameplay can be found in "Gameboard.png" and "Gameplay.gif" respectively. Our solution can be found in "agents/mcts_agent.py".
 
 ## Monte Carlo Tree Search
 Monte Carlo tree search (MCTS) is a method for finding the best move
