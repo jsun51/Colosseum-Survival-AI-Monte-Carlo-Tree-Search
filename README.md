@@ -18,12 +18,11 @@ game, and the updated value is back-propagated to the parent nodes. Each
 node tracks the number of games that begin from itself which have been
 won, lost, or tied, whether simulated directly from the node itself or from a
 child node expanded from it.
-The tree policy combines the exploration of nodes with little information about them and the exploitation of nodes that data from simulations
-indicate to be of high utility. The following equation shown in L8, slides
-44 through 48, is used in the Upper Confidence Trees (UCT) method to
+The tree policy combines the exploration of nodes with little information
+about them and the exploitation of nodes that data from simulations
+indicate to be of high utility. The following equation is used in the Upper Confidence Trees (UCT) method to
 balance exploration and exploitation:
-Q⊕(s, a) = Q(s, a) + c*sqrt[log n(s) / n(s, a)]  (1)
-Equation (1) is used to determine the next node to traverse to given the
+Q⊕(s, a) = Q(s, a) + c*sqrt[log n(s) / n(s, a)]. This is used to determine the next node to traverse to given the
 current node s. Q(s, a) is the currently estimated value of taking an action
 a given the state s; n(s, a) is the number of times we have taken the action
 a from state s, and n(s) is the number of times we have visited state s,
@@ -60,12 +59,12 @@ moves, eliminating the problem of the game’s high branching factor.
 To implement MCTS in our project, we implemented a tree data structure
 for the MCTS tree. Each node, representing a game state, has instance
 variables that represent:
-**1.** The state of the chess board’s wall positions
-**2.** The positions of the student and adversary agents
-**3.** The node’s parent and children
-**4.** The number of games that have been won, lost, or tied
+**1.** The state of the chess board’s wall positions  
+**2.** The positions of the student and adversary agents  
+**3.** The node’s parent and children  
+**4.** The number of games that have been won, lost, or tied  
 **5.** The list of potential actions to be taken from the node that have not
-yet been simulated and turned into child nodes
+yet been simulated and turned into child nodes  
 
 Upon being launched, the student agent creates a root node using the
 game state passed to it by the game engine, and calls the root node’s
