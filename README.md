@@ -76,7 +76,7 @@ both players until the end of the game is reached. The data from the simulation 
 Once the time limit is reached, the child with the highest ratio of wins to total games simulated is returned.
 Our tree policy expands the first entry in the list of possible moves if the
 node currently being considered has not yet been fully expanded. Otherwise,
-it applies the UCT method, using Equation (1) with c = 0.1 to traverse to
+it applies the UCT method, with c = 0.1 to traverse to
 the best child until it reaches a leaf node, upon which it returns the leaf
 node, or it reaches a node that has not yet been fully expanded, upon which
 a move in its list of possible moves is expanded. When a potential move is
