@@ -94,22 +94,6 @@ class MonteCarloTreeSearchNode():
 
                 state_queue.append((next_pos, cur_step + 1))
         return possible_steps
-
-    # Expansion function
-    # Finds all the possible steps within the max step range given an initial state
-    # returns list of possible steps that are tuples ((x,y), dir)
-    #def untried_actions(self, chess_board, my_pos, adv_pos, max_step):
-        #possible_steps = []
-        #for delta_x in range(-max_step, max_step + 1):
-            #for delta_y in range(-(max_step - abs(delta_x)), max_step - abs(delta_x) + 1):
-                #for dir in range(0, 4):
-                    #move = ((my_pos[0] + delta_x, my_pos[1] + delta_y), dir)
-                    #if self.check_valid_step(chess_board, max_step, adv_pos, my_pos, move[0], move[1]):
-                        #possible_steps.append(move)
-                    ##     print(f"Move {move} is valid")
-                    ## else:
-                    ##     print(f"Move {move} is invalid")
-        #return possible_steps
     
     # Number of wins for UCT calculation    
     def q(self):
@@ -119,8 +103,8 @@ class MonteCarloTreeSearchNode():
     def n(self):
         return self._number_of_visits
     
-    # Copied from world.py, used to make moves in the simulation
-    # Modified slightly to work on a copy of the chessboard and returns the modified chessboard for child nodes
+    # Used to make moves in the simulation
+    # Works on a copy of the chessboard and returns the modified chessboard for child nodes
     def set_barrier(self, chess_board, r, c, dir):
         # Moves (Up, Right, Down, Left)
         moves = ((-1, 0), (0, 1), (1, 0), (0, -1))
@@ -163,7 +147,7 @@ class MonteCarloTreeSearchNode():
     def check_endgame(self, chess_board, my_pos, adv_pos):
         """
         Check if the game ends and compute the current score of the agents.
-        Copied from world.py, modified to return 0, 1, or -1 depending on tie, we win, or adversary wins
+        Returns 0, 1, or -1 depending on tie, we win, or adversary wins
 
         Returns
         -------
@@ -304,16 +288,10 @@ class MonteCarloTreeSearchNode():
 
 @register_agent("mcts_agent")
 class MCTSAgent(Agent):
-    """
-    A dummy class for your implementation. Feel free to use this class to
-    add any helper functionalities needed for your agent.
-    """
-
-    
 
     def __init__(self):
-        super(StudentAgent, self).__init__()
-        self.name = "StudentAgent"
+        super(MCTSAgent, self).__init__()
+        self.name = "MCTSAgent"
         self.dir_map = {
             "u": 0,
             "r": 1,
@@ -323,23 +301,18 @@ class MCTSAgent(Agent):
 
     def step(self, chess_board, my_pos, adv_pos, max_step):
         """
-        Implement the step function of your agent here.
-        You can use the following variables to access the chess board:
+        Step function of our agent here.
+        Uses the following variables to access the chess board:
         - chess_board: a numpy array of shape (x_max, y_max, 4)
         - my_pos: a tuple of (x, y)
         - adv_pos: a tuple of (x, y)
         - max_step: an integer
 
-        You should return a tuple of ((x, y), dir),
+        Returns a tuple of ((x, y), dir),
         where (x, y) is the next position of your agent and dir is the direction of the wall
         you want to put on.
-
-        Please check the sample implementation in agents/random_agent.py or agents/human_agent.py for more details.
         """
         
-        # Some simple code to help you with timing. Consider checking 
-        # time_taken during your search and breaking with the best answer
-        # so far when it nears 2 seconds.
         root = MonteCarloTreeSearchNode(chess_board, my_pos, adv_pos, max_step)
         start_time = time.time()
         move = root.find_best_move(start_time)
@@ -347,15 +320,4 @@ class MCTSAgent(Agent):
 
         # dummy return
         return move[0], move[1]
-"""
-High level outline:
 
-Expansion function(state at node):
-- Loops through all possible steps in max step range
-- Calls check_valid_step
-
-Evaluation function:
-- Number of possible steps in a state
-    - Equal to territory size plus extras from wall placement in endgame
-
-"""
