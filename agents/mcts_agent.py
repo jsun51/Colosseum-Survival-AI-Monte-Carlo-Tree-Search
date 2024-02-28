@@ -1,4 +1,5 @@
-# Student agent: Add your own agent here
+# MCTS agent for Colosseum Survival
+# Implemented by Justin Sun
 from agents.agent import Agent
 from store import register_agent
 import sys
@@ -301,8 +302,8 @@ class MonteCarloTreeSearchNode():
 
 
 
-@register_agent("student_agent")
-class StudentAgent(Agent):
+@register_agent("mcts_agent")
+class MCTSAgent(Agent):
     """
     A dummy class for your implementation. Feel free to use this class to
     add any helper functionalities needed for your agent.
