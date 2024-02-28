@@ -113,7 +113,7 @@ The implementation was better than the random agent, beating it roughly
 implementation.
  
 
-## Potential Improvement 
+### Potential Improvement 
 Potential improvements to our MCTS Agent could be to look at the effect
 of the c parameter on win-rate. This parameter dictates how much our
 agent explores the game tree, expanding nodes that do not necessarily have
