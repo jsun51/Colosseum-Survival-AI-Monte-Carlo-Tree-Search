@@ -58,7 +58,7 @@ moves, eliminating the problem of the game’s high branching factor.
 ### Design and structure 
 To implement MCTS in our project, we implemented a tree data structure
 for the MCTS tree. Each node, representing a game state, has instance
-variables that represent:
+variables that represent:  
 **1.** The state of the chess board’s wall positions  
 **2.** The positions of the student and adversary agents  
 **3.** The node’s parent and children  
@@ -72,7 +72,7 @@ find best move function. The find best move function operates in a loop
 until a time limit of 1.8 seconds is reached. In each iteration, our tree policy
 selects a node to simulate. Then, our default policy simulates the game to
 the end by starting from that node and taking random moves on behalf of
-both players until the end of the game is reached. The data from the simulation is then back-propagated throughout the tree.
+both players until the end of the game is reached. The data from the simulation is then back-propagated throughout the tree.
 Once the time limit is reached, the child with the highest ratio of wins to total games simulated is returned.
 Our tree policy expands the first entry in the list of possible moves if the
 node currently being considered has not yet been fully expanded. Otherwise,
@@ -84,7 +84,7 @@ expanded, it is taken off of the list of possible moves and a new child node
 is created from it. New child nodes are automatically penalized with the
 equivalent of 20 lost games if the player character is surrounded by 3 walls,
 as such moves are likely to cause the player to lose from becoming trapped.
-The generation of the list of possible next actions makes use of a function derived from the check valid step function from world.py, applying
+The generation of the list of possible next actions makes use of a function derived from the check valid step function from world.py, applying
 breadth-first search to find all the positions the player can traverse to and
 then iterating through all possible wall positions. The list of next possible
 actions is generated upon the creation of a node and while games are being
@@ -93,7 +93,7 @@ simulated by the default policy.
 ## Result 
 ### Quantitative performance
 
-Full quantitatve analysis can be found in "report.pdf".
+Full quantitatve analysis can be found in "report/report.pdf".
 
 ### Other Approaches
 In a previous iteration of the project, we attempted to use an agent with
@@ -105,10 +105,10 @@ game, the size of a player’s territory corresponds to the number of positions
 that it can move to if step limits are ignored.
 The previous implementation had a low look-ahead and therefore was
 unable to account for the long-term effects of moves. It also had a less
-performant way of finding possible next moves: instead of running breadth
+performant way of finding possible next moves: instead of running breadth
 first search once to find all the possible moves, each position within the
 max step radius was checked for validity by calling the breadth-first-search
-based check valid step function a separate time, leading to redundancy.
+based check valid step function a separate time, leading to redundancy.
 The implementation was better than the random agent, beating it roughly
 90% of the time, but performed poorly compared to the current MCTS
 implementation.
@@ -125,8 +125,7 @@ to find an optimal c parameter that balances exploitation and exploration.
 Additionally, since a major weakness of our agent is the random default
 policy, we could spend more time understanding the game itself to gather
 good heuristics. We could then use these heuristics in our default policy
-for move selection. Furthermore, we could also implement Rapid Action 
-Value Estimation (RAVE) which would estimate the value of playing a move
+for move selection. Furthermore, we could also implement Rapid Action Value Estimation (RAVE) which would estimate the value of playing a move
 immediately by looking at all the simulations where the move occurs. RAVE
 assumes that only the move itself matters, which simplifies the state space
 and thereby requiring fewer simulations to get good results. 
