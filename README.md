@@ -93,7 +93,7 @@ simulated by the default policy.
 ## Result 
 ### Quantitative performance
 
-Full quantitatve analysis can be found in "report/report.pdf".
+Full quantitatve analysis can be found in "FinalReport_JustinSun_JerryHou-Liu.pdf".
 
 ### Other Approaches
 In a previous iteration of the project, we attempted to use an agent with
@@ -125,7 +125,8 @@ to find an optimal c parameter that balances exploitation and exploration.
 Additionally, since a major weakness of our agent is the random default
 policy, we could spend more time understanding the game itself to gather
 good heuristics. We could then use these heuristics in our default policy
-for move selection. Furthermore, we could also implement Rapid Action Value Estimation (RAVE) which would estimate the value of playing a move
+for move selection. Furthermore, we could also implement Rapid Action
+Value Estimation (RAVE) which would estimate the value of playing a move
 immediately by looking at all the simulations where the move occurs. RAVE
 assumes that only the move itself matters, which simplifies the state space
 and thereby requiring fewer simulations to get good results. 
